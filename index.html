@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>Simple Time Tracking App using AngularJS</title>
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/styles.css" rel="stylesheet">
+      <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+      <script type="text/javascript" src="js/jquery.min.js"></script>
+      <script type="text/javascript" src="js/timer.jquery.js"></script>
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/angular.js"></script>
+      <script type="text/javascript" src="js/app.js"></script>
+   </head>
+   <body ng-controller="timerController">
+      <nav class="navbar navbar-inverse navbar-static-top">
+         <div class="container">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="#">Time Tracking App</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+               <ul class="nav navbar-nav">
+                  <li class="active"><a href="#">Timer</a></li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <div class="container">
+         <div class="input-group">
+            <input type="text" class="form-control input-lg" ng-model="task" placeholder="What are you doing ?">
+            <span class="input-group-addon time" ng-model="timer" id="timer">0 sec</span>
+            <span class="input-group-btn">
+               <button class="btn btn-warning btn-lg" ng-show="btn_pause" ng-click="pauseTimer()" type="button"><i class="fa fa-pause"></i></button>
+               <button class="btn btn-warning btn-lg" ng-show="btn_continue" ng-click="continueTimer()" type="button"> <i class="fa fa-play"></i>  </button>
+               <button class="btn btn-danger btn-lg" ng-show="btn_stop" ng-click="stopTimer()" type="button">  Stop </button>
+               <button class="btn btn-primary btn-lg" ng-show="btn_start" ng-click="startTimer()" type="button"> Start </button>
+            </span>
+         </div>
+         <table class="table">
+            <thead>
+               <tr>
+                  <th width="85%">Task</th>
+                  <th align="right">Total: {{getTotal() | secondsToDateTime | date:'HH:mm:ss'}}</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr ng-repeat="data in tasks| orderBy:$index:reverse">
+                  <td>{{data.task}}</td>
+                  <td>{{data.time | secondsToDateTime | date:'HH:mm:ss'}}</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </body>
+</html>

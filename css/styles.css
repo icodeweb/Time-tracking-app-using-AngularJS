@@ -1,0 +1,31 @@
+.navbar-inverse .navbar-nav > .active > a{
+  color: #000;
+  background-color: #f5f5f5;
+}
+
+body{
+  background-color: #f5f5f5;
+}
+
+.navbar-static-top{
+  border:0px;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #fff;
+  font-weight: bold;
+}
+
+.time{
+  background-color: #fff;
+  border-left: 0px;
+}
+
+.btn-primary, .btn-danger{
+  border-top-right-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+}
+
+.table{
+  margin-top: 50px;
+}
